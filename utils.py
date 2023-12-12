@@ -48,3 +48,34 @@ async def fill_and_assert(element, fill_value, times):
     await element.fill(fill_value)
     expect(element).toHaveValue(fill_value)
 
+def get_page_content(parser):
+    all_data = []
+    # categories = parser.root.css('.zBTtmb')
+    # category_results = parser.root.css('.Rk10dc')
+    parent_category = parser.root.css('.pIav2d')
+    # time departure
+    # time arrival
+    # Airline
+    # Airplane
+    # Flight number
+    for result in parent_category:
+        date_info = result.css('[jscontroller="cNtv4b"] span')
+        time_departure = date_info[0].text()
+        time_arrival = date_info[1].text()
+        company = result.css_first('.MX5RWe span:nth-child(2)').text()
+        airplane = result.css_first('.MX5RWe span:nth-child(8)').text()
+        operator = result.css_first('.kSwLQc')
+        optext = "" if operator is None else operator.text()
+        op = optext.split("by", 1)[1].strip() if "by" in optext else optext
+        flight_number = result.css_first('.MX5RWe span:nth-child(4)').text()
+
+        flight_data = {
+            'Time_departure': time_departure,
+            'Time_arrival': time_arrival,
+            'company': company,
+            'airplane': airplane,
+            'Flight_number': flight_number,
+            'Operator': company if operator is None else op
+        }
+        all_data.append(flight_data)
+    return all_data
