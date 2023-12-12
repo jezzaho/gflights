@@ -12,23 +12,28 @@ scraper.py - scraper strony internetowej
 
 ## KONFIGURACJA
 
-1. ```console
+WEBCRAWLER
+
+```bash
 foo@bar:~$ pip install playwright
 ```
-2. ```console
+
+PRZEGLĄDARKA WEBCRAWLERA
+
+ ```bash
 foo@bar:~$ playwright install chromium 
-foo
 ```
 
-3. ```console
+PANDAS I OPENPYXL DO EKSPORTU DO XLSX, SELECTOLAX DO PARSOWANIA STRONY DO JSON
+
+ ```bash
 foo@bar:~$ pip install pandas selectolax openpyxl
-foo
 ```
 
-4. URUCHOMIENIE
-```console
+URUCHOMIENIE PROGRAMU
+
+```bash
 foo@bar:~$ python run main.py
-foo
 ```
 
 ### WEJŚCIA
